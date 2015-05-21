@@ -60,8 +60,7 @@
                                                     
                                                 </div>
                                                 
-                                                
-                                                <li><a href="javascript:Filtro();" class="button style3 big">test</a></li>
+                                              
                                                 
                                                </form>
                                             
