@@ -2,13 +2,22 @@
 
 <html>
 	<head>
-		<title>Escape Velocity by HTML5 UP</title>
+		<title>Email Test V0.2</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/css/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie/v8.css" /><![endif]-->
 		<!--[if lte IE 8]><script src="assets/css/ie/respond.min.js"></script><![endif]-->
+                
+                <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	</head>
 	<body class="homepage">
             <input type="hidden" value="0" id="reject_txt" />
@@ -38,8 +47,22 @@
 					<section id="intro" class="container">
                                             <form method="post" action="#">
                                                <div class="12u">
-							<textarea name="message" id="txt_emails" placeholder="Correos electronicos separados por comas (,)" rows="4"></textarea>
+                                                   <textarea style="color:black;"  name="message" id="txt_emails" placeholder="Correos electronicos separados por comas (,)" rows="4"></textarea>
 						</div>
+                                                
+                                                <label>Filtrar</label>
+                                                <ul class="actions">
+							<li><a href="javascript:FillEmail();" class="button style3 big">Comenzar Filtro</a></li>
+						</ul>
+                                                
+                                                <br><br>
+                                                <div id="filtro" align="center" class="form-group">
+                                                    
+                                                </div>
+                                                
+                                                
+                                                <li><a href="javascript:Filtro();" class="button style3 big">test</a></li>
+                                                
                                                </form>
                                             
 						<p class="style1">Una vez le des click este proceso comenzara y no hay regreso</p>
@@ -56,12 +79,21 @@
 						<ul class="actions">
 							<li><a href="javascript:StartEmail();" class="button style3 big">Dale Play</a></li>
 						</ul>
+                                                <br>
+              
 					</section>
 				</div>
 
 			<!-- Main -->
 				<div class="wrapper style2">
-                                    <div id="txt_message_details" class="title"></div>
+                                    <div id="txt_message_details" class="title">
+                                        <!-- detalles de los mensajes -->
+                                                                         
+ 
+    
+  
+
+                                    </div>
 					<div id="main" class="container">
 
 						
@@ -70,17 +102,21 @@
 								
 								<div class="feature-list">
 									<div class="row">
-										<div class="6u 12u(mobile)">
+										<div class="6u 12u(mobile) ">
+                                                                                    <form method="post" action="#">
 											<section>
-												<h3 class="icon fa-comment">Aceptados</h3>
-                                                                                                <textarea name="mails" id="mails" placeholder="" rows="4"></textarea>
+												<h3 class="icon fa-check-circle">Aceptados</h3>
+                                                                                                <textarea  name="mails" id="mails" placeholder="" rows="4"></textarea>
 											</section>
+                                                                                    </form>
 										</div>
 										<div class="6u 12u(mobile)">
+                                                                                     <form method="post" action="#">
 											<section>
-												<h3 class="icon fa-refresh">Rechazados</h3>
+												<h3 class="icon fa-close">Rechazados</h3>
 												<textarea name="no_mails" id="no_mails" placeholder="" rows="4"></textarea>
 											</section>
+                                                                                     </form>
 										</div>
 									</div>
 									

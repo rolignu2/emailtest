@@ -58,6 +58,8 @@ function mailtest($email, $debug=false) {
 $email          = $_REQUEST['email'];
 $data           = array();
 
+
+
 if (mailtest($email, true)){
      $data = array("email" => $email ,  "is_reject" => false);
 }
