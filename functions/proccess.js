@@ -12,14 +12,11 @@ function StartEmail(){
     var rejected        = null;
     
     
-   
-    
     if(data === "" || data === null){
          $("#txt_message_details").html("No hay correos !!");
          return;
     }
     
-     
     
     data    = $.trim(data);
     
@@ -27,17 +24,19 @@ function StartEmail(){
     
     length  = array.length;
     
+    $("#txt_analizar").html('Correos a analizar : ' + length);
+    
     for(var i = 0 ; i < length ; i++){
-        rejected   = $("#txt_rechazados").html();
-        var r      = $.trim(rejected[1]);
         
-        ThreatEmail(array[i] , (i+1) , length , r );
+        rejected   = $("#reject_txt").val();
+        ThreatEmail(array[i] , rejected  , i );
+       
     }
 
 }
 
 
-function ThreatEmail(email ,  rejected){
+function ThreatEmail(email ,  rejected , i){
     
     var params = {
         "email": email,
@@ -54,11 +53,21 @@ function ThreatEmail(email ,  rejected){
            $("#").html("");
        },
        success: function(value){
-           alert(value);
            var json_data = JSON.parse(value);
-           alert(json_data[0].email);
-           //$("#txt_rechazados").html("Correos Rechazados : 0");
-          // $("#").html("");
+           $("#txt_rechazados").html("Correos Rechazados : " + json_data.reject);
+           $("#reject_txt").val(json_data.reject);
+           
+           if(json_data.is_reject == true)
+           {
+               $("#no_mails").append(json_data.email + ",");
+                
+           }else{
+               $("#mails").append(json_data.email + ",");
+               
+           }
+           
+            $("#txt_procesados").html('Correos Procesados : ' + (i+1));
+          
        }
 
    });
