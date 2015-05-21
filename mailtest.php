@@ -56,14 +56,13 @@ function mailtest($email, $debug=false) {
 }
 
 $email          = $_REQUEST['email'];
-$rejected       = $_REQUEST['rejected'] ;
 $data           = array();
 
 if (mailtest($email, true)){
-     $data = array("email" => $email , "reject" => $rejected  , "is_reject" => false);
+     $data = array("email" => $email ,  "is_reject" => false);
 }
 else{
-    $data = array("email" => $email , "reject" => ($rejected  + 1) ,  "is_reject" => true);
+    $data = array("email" => $email ,   "is_reject" => true);
 }
   
 echo json_encode($data);

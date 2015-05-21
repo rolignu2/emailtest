@@ -28,22 +28,23 @@ function StartEmail(){
     
     for(var i = 0 ; i < length ; i++){
         
-        rejected   = $("#reject_txt").val();
-        ThreatEmail(array[i] , rejected  , i );
+        ThreatEmail(array[i] ,  i );
        
     }
 
 }
 
 
-function ThreatEmail(email ,  rejected , i){
+function ThreatEmail(email , i){
     
     var params = {
-        "email": email,
-        "rejected": rejected
+        "email": email
     };
     
+    
     $.ajax({
+        
+        
        
        type: "POST",
        url: "mailtest.php",
@@ -54,18 +55,19 @@ function ThreatEmail(email ,  rejected , i){
        },
        success: function(value){
            var json_data = JSON.parse(value);
-           $("#txt_rechazados").html("Correos Rechazados : " + json_data.reject);
-           $("#reject_txt").val(json_data.reject);
-           
+          
            if(json_data.is_reject == true)
            {
                $("#no_mails").append(json_data.email + ",");
+               var v =  parseInt($("#reject_txt").val()) + 1;
+               $("#reject_txt").val(v);
                 
            }else{
                $("#mails").append(json_data.email + ",");
                
            }
            
+            $("#txt_rechazados").html("Correos Rechazados : " +  $("#reject_txt").val());
             $("#txt_procesados").html('Correos Procesados : ' + (i+1));
           
        }
